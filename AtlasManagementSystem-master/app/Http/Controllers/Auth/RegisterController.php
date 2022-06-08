@@ -9,6 +9,8 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
+use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\RegisterRequest;
 use DB;
 
 use App\Models\Users\Subjects;
@@ -57,8 +59,32 @@ class RegisterController extends Controller
         return view('auth.register.register', compact('subjects'));
     }
 
-    public function registerPost(Request $request)
+    public function registerPost(RegisterRequest $request)
     {
+        // $validator = Validator::make($request->all(), [
+        //     'over_name' => ['required', 'string', 'max:10'],
+        //     'under_name' => ['required', 'string', 'max:10'],
+        //     'over_name_kana'=> ['required', 'string', 'max:30'],
+        //     'under_name_kana'=> ['required', 'string', 'max:30'],
+        //     'mail_address'=> ['required','email','max:100'],
+        // ]);
+
+        // if ($validator->fails()) {
+        //     return redirect()->back()
+        //     ->withInput()
+        //     ->withErrors($validator);
+        // }
+        // $validator = $request->validate([ // これだけでバリデーションできるLaravelすごい！
+        //     'over_name' => ['required', 'string', 'max:10'],
+        //     'under_name' => ['required', 'string', 'max:10'],
+        //     'over_name_kana'=> ['required', 'string', 'max:30'],
+        //     'under_name_kana'=> ['required', 'string', 'max:30'],
+        //     'mail_address'=> ['required','email','max:100'],
+        //     'sex'=> ['required'],
+            // 'birth_day'=> ['required','after_or_equal:2000/01/01'],
+            // 'role'=> ['required'],
+            // 'password'=> ['required','min:8','max:30','confirmed'],
+        // ]);
 
         DB::beginTransaction();
         try{
@@ -81,9 +107,10 @@ class RegisterController extends Controller
                 'password' => bcrypt($request->password)
             ]);
 
-            dd($subjects);
+            if($request->role == 4){
             $user = User::findOrFail($user_get->id);
-            $user->subjects()->attach($subjects);
+            $user->subjects()->attach($subjects);dd($subjects);
+            }
             DB::commit();
             return view('auth.login.login');
         }catch(\Exception $e){

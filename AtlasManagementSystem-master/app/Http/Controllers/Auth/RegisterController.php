@@ -61,30 +61,6 @@ class RegisterController extends Controller
 
     public function registerPost(RegisterRequest $request)
     {
-        // $validator = Validator::make($request->all(), [
-        //     'over_name' => ['required', 'string', 'max:10'],
-        //     'under_name' => ['required', 'string', 'max:10'],
-        //     'over_name_kana'=> ['required', 'string', 'max:30'],
-        //     'under_name_kana'=> ['required', 'string', 'max:30'],
-        //     'mail_address'=> ['required','email','max:100'],
-        // ]);
-
-        // if ($validator->fails()) {
-        //     return redirect()->back()
-        //     ->withInput()
-        //     ->withErrors($validator);
-        // }
-        // $validator = $request->validate([ // これだけでバリデーションできるLaravelすごい！
-        //     'over_name' => ['required', 'string', 'max:10'],
-        //     'under_name' => ['required', 'string', 'max:10'],
-        //     'over_name_kana'=> ['required', 'string', 'max:30'],
-        //     'under_name_kana'=> ['required', 'string', 'max:30'],
-        //     'mail_address'=> ['required','email','max:100'],
-        //     'sex'=> ['required'],
-            // 'birth_day'=> ['required','after_or_equal:2000/01/01'],
-            // 'role'=> ['required'],
-            // 'password'=> ['required','min:8','max:30','confirmed'],
-        // ]);
 
         DB::beginTransaction();
         try{

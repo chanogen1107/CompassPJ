@@ -31,11 +31,11 @@ class RegisterRequest extends FormRequest
             'mail_address'=> 'required|email|max:100|unique:users',
             'sex'=> 'required',
             'role'=> 'required',
-            'old_year'=>'required|after:2000',
+            'old_year'=>'required|after:1999',
             'old_month'=>'required',
             'old_day'=>'required',
-            'password'=> 'required|min:8|max:30|confirmed|string|regex:/\A([a-zA-Z0-9]{8,})+\z/u',
-            'password-confirmed'=> 'required',
+            'password'=> 'required|min:8|max:30|string|regex:/\A([a-zA-Z0-9]{8,})+\z/u|confirmed',
+            'password_confirmation'=> 'required',
         ];
     }
 
@@ -49,8 +49,8 @@ class RegisterRequest extends FormRequest
             'under_name_kana.regex' => 'フリガナはカタカナで入力してください。',
             'mail_address.max' => 'メールアドレスは100文字以内で入力してください。',
             'mail_address.email' => 'メールアドレスはEメールで入力してください。',
-            'mail_address.unique:users' => 'このメールアドレスはすでに使われています',
-            'old_year.after:2000' => 'このメールアドレスはすでに使われています',
+            'mail_address.unique' => 'このメールアドレスはすでに使われています',
+            'old_year.after' => '誕生日は2000年以降で入力してください',
             'password.min' => 'パスワードは8文字以上で入力してください。',
             'password.max' => 'パスワードは30文字以下で入力してください。',
             'password.regex' => 'パスワードは半角英数字で入力してください。',

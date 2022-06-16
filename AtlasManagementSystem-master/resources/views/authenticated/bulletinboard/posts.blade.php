@@ -10,8 +10,13 @@
       <p><a href="{{ route('post.detail', ['id' => $post->id]) }}">{{ $post->post_title }}</a></p>
       <div class="post_bottom_area d-flex">
         <div class="d-flex post_status">
+        <div class="mr-5">
+          <p class="category_btn">$post->post_sub_categories->sub_categories->sub_category</p>
+        </div>
           <div class="mr-5">
             <i class="fa fa-comment"></i><span class=""></span>
+            <p>{{ $post->postComments->count()}}</p>
+
           </div>
           <div>
             @if(Auth::user()->is_Like($post->id))
@@ -19,6 +24,7 @@
             @else
             <p class="m-0"><i class="fas fa-heart like_btn" post_id="{{ $post->id }}"></i><span class="like_counts{{ $post->id }}"></span></p>
             @endif
+            <p>$post->like->count</p>
           </div>
         </div>
       </div>
@@ -37,6 +43,9 @@
       <ul>
         @foreach($categories as $category)
         <li class="main_categories" category_id="{{ $category->id }}"><span>{{ $category->main_category }}<span></li>
+        @foreach($category->subCategories as $sub_category)
+        <li class="category_btn" category_id="{{ $category->id }}"><span>{{ $sub_category->sub_category }}<span></li>
+        @endforeach
         @endforeach
       </ul>
     </div>

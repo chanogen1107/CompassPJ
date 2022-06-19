@@ -24,7 +24,7 @@
             @else
             <p class="m-0"><i class="fas fa-heart like_btn" post_id="{{ $post->id }}"></i><span class="like_counts{{ $post->id }}"></span></p>
             @endif
-            <p>$post->like->count</p>
+            <p>{{$post->likes->count()}}</p>
           </div>
         </div>
       </div>

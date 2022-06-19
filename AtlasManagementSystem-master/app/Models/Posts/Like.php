@@ -17,6 +17,10 @@ class Like extends Model
         return $this->belongsToMany('App\Models\Users\User', 'likes', 'like_post_id', 'like_user_id');
     }
 
+    //ツイートのリレーション
+    public function Post(){
+        return $this->belongsTo('App\Models\Posts\Post','like_post_id');
+    }
     public function likeCounts($post_id){
         return $this->where('like_post_id', $post_id)->get()->count();
     }

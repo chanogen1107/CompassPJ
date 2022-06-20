@@ -55,11 +55,18 @@ class PostsController extends Controller
     }
 
     public function postCreate(PostFormRequest $request){
+        // dd(Post::with('SubCategory')->get());
+        // dd($request);
+        $Postsub=$request->post_category_id;
         $post = Post::create([
             'user_id' => Auth::id(),
             'post_title' => $request->post_title,
             'post' => $request->post_body
         ]);
+
+        $posts = Post::findOrFail($post->id);
+        $posts->SubCategory()->attach($Postsub);
+        
         return redirect()->route('post.show');
     }
 

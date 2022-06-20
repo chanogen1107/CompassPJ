@@ -36,4 +36,9 @@ class Post extends Model
     public function likes(){
         return $this->hasMany('App\Models\Posts\Like','like_post_id');
     }
+
+    //サブカテゴリーのリレーション
+    public function SubCategory(){
+        return $this->belongsToMany('App\Models\Categories\SubCategory','post_sub_categories', 'post_id', 'sub_category_id')->withPivot('id');
+    }
 }

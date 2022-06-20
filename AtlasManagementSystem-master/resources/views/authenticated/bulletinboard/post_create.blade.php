@@ -18,7 +18,7 @@
         @foreach($main_categories as $main_category)
         <optgroup label="{{ $main_category->main_category }}"></optgroup>
         @foreach($main_category->subCategories as $sub_category)
-        <option>{{$sub_category->sub_category}}</option>
+        <option value="{{$sub_category->id}}" form="postCreate">{{$sub_category->sub_category}}</option>
         @endforeach
 
         <!-- サブカテゴリー表示 -->

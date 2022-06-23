@@ -29,11 +29,12 @@ class RegisterRequest extends FormRequest
             'over_name_kana'=> 'required|string|max:30|regex:/\A[ァ-ヴー]+\z/u',
             'under_name_kana'=> 'required|string|max:30|regex:/\A[ァ-ヴー]+\z/u',
             'mail_address'=> 'required|email|max:100|unique:users',
-            'sex'=> 'required',
-            'role'=> 'required',
-            'old_year'=>'required|after:1999',
-            'old_month'=>'required',
-            'old_day'=>'required',
+            'sex'=> 'required|in:1,2,3',
+            'role'=> 'required|in:1,2,3,4',
+            'date'=> 'required|date|before_or_equal:today',
+            'old_year'=>'required_with:old_month,old_day|after_or_equal:2000',
+            'old_month'=>'required_with:old_year,old_day',
+            'old_day'=>'required_with:old_month,old_year',
             'password'=> 'required|min:8|max:30|string|regex:/\A([a-zA-Z0-9]{8,})+\z/u|confirmed',
             'password_confirmation'=> 'required',
         ];
@@ -57,5 +58,18 @@ class RegisterRequest extends FormRequest
             'password.confirmed' => '確認パスワードが一致していません。',
 
         ];
+    }
+
+    public function getValidatorInstance()
+    {
+        if ($this->input('old_day') && $this->input('old_month') && $this->input('old_year'))
+        {
+            $birthDate = implode('-', $this->only(['old_year', 'old_month', 'old_day']));
+            $this->merge([
+                'date' => $birthDate,
+            ]);
+        }
+
+        return parent::getValidatorInstance();
     }
 }

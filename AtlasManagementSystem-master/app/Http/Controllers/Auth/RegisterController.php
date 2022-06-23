@@ -60,7 +60,8 @@ class RegisterController extends Controller
     }
 
     public function registerPost(RegisterRequest $request)
-    {
+    { 
+        // dd(User::with('Subjects')->get());
 
         // DB::beginTransaction();
         try{
@@ -82,11 +83,11 @@ class RegisterController extends Controller
                 'role' => $request->role,
                 'password' => bcrypt($request->password)
             ]);
-
             if($request->role == 4){
             $user = User::findOrFail($user_get->id);
-            dd($user);
+            // dd($user);
             $user->subjects()->attach($subjects);
+            // dd($subjects);
             }
             // DB::commit();
             return view('auth.login.login');

@@ -7,12 +7,13 @@
         <div class="detail_inner_head">
           <div>
           </div>
+          @if($post->user_id == Auth::user()->id)
           <div>
             <span class="edit-modal-open" post_title="{{ $post->post_title }}" post_body="{{ $post->post }}" post_id="{{ $post->id }}">編集</span>
-            <a href="{{ route('post.delete', ['id' => $post->id]) }}">削除</a>
+            <a href="{{ route('post.delete', ['id' => $post->id]) }}" onclick="return confirm('こちらの投稿を削除してもよろしいでしょうか？')">削除</a>
           </div>
+          @endif
         </div>
-
         <div class="contributor d-flex">
           <p>
             <span>{{ $post->user->over_name }}</span>
@@ -57,16 +58,22 @@
   <div class="modal__content">
     <form action="{{ route('post.edit') }}" method="post">
       <div class="w-100">
+      @if($errors->first('post_title'))
+      <span class="error_message">{{ $errors->first('post_title') }}</span>
+      @endif
         <div class="modal-inner-title w-50 m-auto">
           <input type="text" name="post_title" placeholder="タイトル" class="w-100">
         </div>
+        @if($errors->first('post_title'))
+      <span class="error_message">{{ $errors->first('post_title') }}</span>
+      @endif
         <div class="modal-inner-body w-50 m-auto pt-3 pb-3">
           <textarea placeholder="投稿内容" name="post_body" class="w-100"></textarea>
         </div>
         <div class="w-50 m-auto edit-modal-btn d-flex">
           <a class="js-modal-close btn btn-danger d-inline-block" href="">閉じる</a>
           <input type="hidden" class="edit-modal-hidden" name="post_id" value="">
-          <input type="submit" class="btn btn-primary d-block" value="編集">
+          <input type="submit" class="btn btn-primary d-block" onclick="return confirm('こちらの投稿を編集してもよろしいでしょうか？')" value="編集">
         </div>
       </div>
       {{ csrf_field() }}

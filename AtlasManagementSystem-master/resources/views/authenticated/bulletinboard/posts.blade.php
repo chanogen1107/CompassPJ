@@ -42,11 +42,14 @@
       </div>
       <input type="submit" name="like_posts" class="category_btn" value="いいねした投稿" form="postSearchRequest">
       <input type="submit" name="my_posts" class="category_btn" value="自分の投稿" form="postSearchRequest">
-      <ul>
+      <ul >
         @foreach($categories as $category)
         <li class="main_categories" category_id="{{ $category->id }}"><span>{{ $category->main_category }}<span></li>
         @foreach($category->subCategories as $sub_category)
-        <input type="submit" class="category_btn" name="category_word" category_id="{{ $sub_category->id }}"  value="{{ $sub_category->sub_category }}"form="postSearchRequest" >
+        <li>
+         <input type="submit"  name="category_word" class="category_btn" value="{{ $sub_category->sub_category }}" value="{{ $sub_category->id }}" form="postSearchRequest">
+        </li>
+        <!-- <input type="submit" name="category_word" class="category_btn" value="{{ $sub_category->id }}" form="postSearchRequest" > -->
         <!-- <input type="submit" class="category_btn" name="category_word" category_id="{{ $category->id }}" value="{{ $sub_category->sub_category }}" form="postSearchRequest"> -->
         @endforeach
         @endforeach

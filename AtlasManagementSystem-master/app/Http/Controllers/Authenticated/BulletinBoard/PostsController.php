@@ -32,9 +32,11 @@ class PostsController extends Controller
         }else if($request->category_word){
             $sub_category = $request->category_word;
             // dd($request);
-            Post::whereHas('SubCategory', function ($query) use ($sub_category) {
+            $query = Post::query();
+            $posts = Post::whereHas('SubCategory', function ($query) use ($sub_category) {
+                // dd($sub_category);
                 $query->where('sub_category', $sub_category);
-                dd($query);
+                // dd($query);
             })->get();
 
             // $posts = Post::with('user', 'postComments','likes','SubCategory')

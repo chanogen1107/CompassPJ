@@ -24,7 +24,8 @@ class UsersTableSeeder extends Seeder
              'role' => '4',
              'password' => bcrypt('ichinoichino'),
              'created_at' => new DateTime(),
-        ]
+            ],
+
         ]);
 
     }

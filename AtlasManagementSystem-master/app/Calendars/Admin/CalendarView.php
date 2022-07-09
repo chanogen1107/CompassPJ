@@ -37,6 +37,7 @@ class CalendarView{
       $html[] = '<tr class="'.$week->getClassName().'">';
       $days = $week->getDays();
       foreach($days as $day){
+        // dd($day);
         $startDay = $this->carbon->format("Y-m-01");
         $toDay = $this->carbon->format("Y-m-d");
         if($startDay <= $day->everyDay() && $toDay >= $day->everyDay()){

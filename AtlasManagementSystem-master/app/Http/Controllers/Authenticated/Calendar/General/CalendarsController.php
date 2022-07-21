@@ -38,6 +38,21 @@ class CalendarsController extends Controller
     }
 
     public function delete(Request $request){
-        $request->delete_date;
+
+        $id = $request->delete_date;
+
+        $query = ReserveSettings::query();
+        $query->whereHas('users', function($q) use($id)  {
+            //ReserveSettingsの中のusersメソッドを使用して{}の中のfunction($q)を実行する。そのために$idを使う。
+            $q->where('reserve_setting_users.id', $id);
+            dd($q);
+            //reserve_setting_usersの中のidカラムを$idで検索する
+        })->delete();
+        //検索ヒットしたレコードを削除する。
+        dd($id);
+        //$idで確かに中間テーブルのレコードは受け取れている。
+        return redirect()->route('top.show');
+        //戻るときにエラーがでるのでひとまずトップに。
+
     }
 }

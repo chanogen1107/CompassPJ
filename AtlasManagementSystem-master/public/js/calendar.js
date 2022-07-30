@@ -5,6 +5,8 @@ $('#hogeModal').on('click', function () {
   $('.modal-date').html(reserve_date);
   $('.modal-part').html(reserve_part);
   $('.modal-id-hidden').val(reserve_id);
+  $('.modal-date-hidden').val(reserve_date);
+  $('.modal-part-hidden').val(reserve_part);
   // $('myModalLabel').modal('show');
   // // return false;
 })

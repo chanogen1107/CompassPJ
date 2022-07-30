@@ -39,19 +39,31 @@ class CalendarsController extends Controller
 
     public function delete(Request $request){
 
-        dd($request);
-        $id = $request->delete_date;
+        // dd($request);
+        $id = $request->delete_id;
+ 
         DB::delete('delete from reserve_setting_users WHERE id = '.$id.'');
+
+
 
         //---予約枠をキャンセルした分プラス1しなくてはならない
 
-        $query = ReserveSettings::query();
-        $query->whereHas('users', function($q) use($id)  {
-            //ReserveSettingsの中のusersメソッドを使用して{}の中のfunction($q)を実行する。そのために$idを使う。
-            $q->where('reserve_setting_users.id', $id);
-            // dd($q);
-            //reserve_setting_usersの中のidカラムを$idで検索する
-        })->increment('limit_users');
+
+        $date = $request->delete_date;
+        $part = $request->delete_part;
+        $reserve_settings = ReserveSettings::where('setting_reserve', $date)->where('setting_part', $part)->first();
+        $reserve_settings->increment('limit_users');
+
+        //  dd($request);
+        // $reserve_settings->users()->attach(Auth::id());
+
+        // $query = ReserveSettings::query();
+        // $query->whereHas('users', function($q) use($id)  {
+        //     //ReserveSettingsの中のusersメソッドを使用して{}の中のfunction($q)を実行する。そのために$idを使う。
+        //     $q->where('reserve_setting_users.id', $id);
+        //     // dd($q);
+        //     //reserve_setting_usersの中のidカラムを$idで検索する
+        // })->increment('limit_users');
 
 
         // $users = DB::table('reserve_setting_users')

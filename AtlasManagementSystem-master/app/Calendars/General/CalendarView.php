@@ -61,9 +61,29 @@ class CalendarView{
             $html[] = '<p class="m-auto p-0 w-75" style="font-size:12px">'.$reservePart.'</p>';
             $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
           }else{
-            $html[] = '<input type="hidden" name="delete_date" form="deleteParts" value="'. $day->authReserveDate($day->everyDay())->first()->pivot->id .'">';
-            $html[] = '<input type="submit" class="btn btn-danger p-0 w-75" style="font-size:12px"  form="deleteParts" value= "'. $reservePart .'">';
+            $html[] = '<input type="hidden" name="delete_date" value="'. $day->authReserveDate($day->everyDay())->first()->pivot->id .'">';
+            $html[] = '<input type="submit" class="btn btn-danger mb-8 modal-open" data-toggle="modal" data-target="#testModal"  p-0 w-75" style="font-size:12px" reserve_date="date" reserve_part="part" reserve_id="id"  value= "'. $reservePart .'">';
             $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
+
+            $html[] ='<div class="modal fade" id="testModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">';
+            $html[] ='<div class="modal-dialog">';
+            $html[] ='<div class="modal-content">';
+            $html[] ='<div class="modal-header">';
+            $html[] ='<h4><div class="modal-title" id="myModalLabel">削除確認画面</div></h4>';
+            $html[] ='</div>';
+            $html[] ='<p name="reserve_date">予約日</p>';
+            $html[] ='<p name="reserve_part">時間</p>';
+            $html[] ='<div class="modal-body">';
+            $html[] ='<label>データを削除しますか？</label>';
+            $html[] ='</div>';
+            $html[] ='<div class="modal-footer">';
+            $html[] ='<button type="button" class="btn btn-default" data-dismiss="modal">閉じる</button>';
+            $html[] ='<input type="hidden" name="modal-id-hidden"  value="'. $day->authReserveDate($day->everyDay())->first()->pivot->id .'">';
+            $html[] ='<input type="submit" class="btn btn-danger" form = "deleteParts"  value="削除">';
+            $html[] ='</div>';
+            $html[] ='</div>';
+            $html[] ='</div>';
+            $html[] ='</div>';
           }
         }else if($startDay <= $day->everyDay() && $toDay >= $day->everyDay()){
           $html[] = '<p class="m-auto p-0 w-75" style="font-size:12px">受付終了</p>';
@@ -79,6 +99,7 @@ class CalendarView{
     $html[] = '</tbody>';
     $html[] = '</table>';
     $html[] = '</div>';
+
     $html[] = '<form action="/reserve/calendar" method="post" id="reserveParts">'.csrf_field().'</form>';
     $html[] = '<form action="/delete/calendar" method="post" id="deleteParts">'.csrf_field().'</form>';
 

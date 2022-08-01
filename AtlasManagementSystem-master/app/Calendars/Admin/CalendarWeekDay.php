@@ -29,12 +29,16 @@ class CalendarWeekDay{
     $two_part = ReserveSettings::with('users')->where('setting_reserve', $ymd)->where('setting_part', '2')->first();
     $three_part = ReserveSettings::with('users')->where('setting_reserve', $ymd)->where('setting_part', '3')->first();
 
+    // dd($one_part->pivot);
     $html[] = '<div class="text-left">';
     if($one_part){
       // dd($one_part);
       // $html[] = '<form action = "/calendar/{$post->id}/{setting_reserve}/{setting_part}">';
       $html[] = '<p class="day_part m-0 pt-1"><a href = "/calendar/'.$one_part -> id.'/'.$one_part -> setting_reserve.'/'.$one_part -> setting_part.'">1部</a></p>';
-      $html[] = '<p class="day_part m-0 pt-1">'.$one_part->pivot->reserve_setting_id.'</p>';
+      if(!empty($one_part->pivot)){
+      $html[] = '<p class="day_part m-0 pt-1">'.$one_part->pivot->count().'</p>';
+      }
+    
 
     }
     if($two_part){

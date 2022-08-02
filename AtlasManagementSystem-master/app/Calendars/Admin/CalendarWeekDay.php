@@ -35,9 +35,9 @@ class CalendarWeekDay{
       // dd($one_part);
       // $html[] = '<form action = "/calendar/{$post->id}/{setting_reserve}/{setting_part}">';
       $html[] = '<p class="day_part m-0 pt-1"><a href = "/calendar/'.$one_part -> id.'/'.$one_part -> setting_reserve.'/'.$one_part -> setting_part.'">1部</a></p>';
-      if(!empty($one_part->pivot)){
-      $html[] = '<p class="day_part m-0 pt-1">'.$one_part->pivot->count().'</p>';
-      }
+      // if(!empty($one_part->pivot)){
+      $html[] = '<p class="day_part m-0 pt-1">'.$one_part->users->count().'</p>';
+      // }
     
 
     }

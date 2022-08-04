@@ -13,15 +13,6 @@
   <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
 </head>
 <body>
-@if ($errors->any())
-    <div class="alert alert-danger mt-3">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
   <form action="{{ route('registerPost') }}" method="POST">
   @csrf
     <div class="w-100 vh-100 d-flex" style="align-items:center; justify-content:center;">
@@ -41,6 +32,12 @@
               </div>
             </div>
           </div>
+          @if($errors->first('over_name'))
+      <span class="error_message">{{ $errors->first('over_name') }}</span>
+      @endif
+      @if($errors->first('under_name'))
+      <span class="error_message">{{ $errors->first('under_name') }}</span>
+      @endif
           <div class="d-flex mt-3" style="justify-content:space-between">
             <div class="" style="width:140px">
               <label class="d-block m-0" style="font-size:13px">セイ</label>
@@ -55,12 +52,21 @@
               </div>
             </div>
           </div>
+          @if($errors->first('over_name_kana'))
+      <span class="error_message">{{ $errors->first('over_name_kana') }}</span>
+      @endif
+      @if($errors->first('under_name_kana'))
+      <span class="error_message">{{ $errors->first('under_name_kana') }}</span>
+      @endif
           <div class="mt-3">
             <label class="m-0 d-block" style="font-size:13px">メールアドレス</label>
             <div class="border-bottom border-primary">
               <input type="mail" class="w-100 border-0 mail_address" name="mail_address">
             </div>
           </div>
+          @if($errors->first('mail_address'))
+      <span class="error_message">{{ $errors->first('mail_address') }}</span>
+      @endif
         </div>
         <div class="mt-3">
           <input type="radio" name="sex" class="sex" value="1">
@@ -167,6 +173,9 @@
           </select>
           <label style="font-size:13px">月</label>
         </div>
+        @if($errors->first('old_year.after'))
+      <span class="error_message">{{ $errors->first('old_year.after') }}</span>
+      @endif
         <div class="mt-3">
           <label class="d-block m-0" style="font-size:13px">役職</label>
           <input type="radio" name="role" class="admin_role role" value="1">
@@ -193,12 +202,19 @@
             <input type="password" class="border-0 w-100 password" name="password">
           </div>
         </div>
+
+        @if($errors->first('password'))
+      <span class="error_message">{{ $errors->first('password') }}</span>
+      @endif
         <div class="mt-3">
           <label class="d-block m-0" style="font-size:13px">確認用パスワード</label>
           <div class="border-bottom border-primary">
             <input type="password" class="border-0 w-100 password_confirmation" name="password_confirmation">
           </div>
         </div>
+        @if($errors->first('password.confirmed'))
+      <span class="error_message">{{ $errors->first('password.confirmed') }}</span>
+      @endif
         <div class="mt-5 text-right">
           <input type="submit" class="btn btn-primary register_btn" disabled value="新規登録" onclick="return confirm('登録してよろしいですか？')">
         </div>

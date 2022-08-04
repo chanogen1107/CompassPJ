@@ -1,7 +1,7 @@
 @extends('layouts.sidebar')
 
 @section('content')
-@if ($errors->any())
+<!-- @if ($errors->any())
     <div class="alert alert-danger mt-3">
         <ul>
             @foreach ($errors->all() as $error)
@@ -9,7 +9,7 @@
             @endforeach
         </ul>
     </div>
-@endif
+@endif -->
 <div class="post_create_container d-flex">
   <div class="post_create_area border w-50 m-5 p-5">
     <div class="">

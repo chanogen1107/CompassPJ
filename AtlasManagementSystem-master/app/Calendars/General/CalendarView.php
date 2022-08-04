@@ -72,7 +72,7 @@ class CalendarView{
             $html[] ='<h4><div class="modal-title" id="myModalLabel">削除確認画面</div></h4>';
             $html[] ='</div>';
             $html[] ='<p class = modal-date name="reserve_date"></p>';
-            $html[] ='<p class = modal-part name="reserve_part">時間</p>';
+            $html[] ='<p>リモ</p><p class = modal-part name="reserve_part">時間</p><p>部</p>';
             $html[] ='<input type="hidden" class="modal-id-hidden" name="delete_id" form = "deleteParts" value="">';
             $html[] ='<input type="hidden" class="modal-date-hidden" name="delete_date" form = "deleteParts" value="">';
             $html[] ='<input type="hidden" class="modal-part-hidden" name="delete_part" form = "deleteParts" value="">';

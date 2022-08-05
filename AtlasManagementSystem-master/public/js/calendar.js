@@ -1,4 +1,4 @@
-$('#hogeModal').on('click', function () {
+$('.modal-open').on('click', function () {
   var reserve_date = $(this).attr('reserve_date');
   var reserve_part = $(this).attr('reserve_part');
   var reserve_id = $(this).attr('reserve_id');

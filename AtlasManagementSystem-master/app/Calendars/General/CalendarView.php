@@ -62,7 +62,7 @@ class CalendarView{
             $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
           }else{
             $html[] = '<input type="hidden" name="delete_date" reserve_id ='. $day->authReserveDate($day->everyDay())->first()->pivot->id .'">';
-            $html[] = '<input type="submit" class="btn btn-danger mb-8 modal-open" id="hogeModal" data-toggle="modal" data-target="#testModal"  p-0 w-75" style="font-size:12px" reserve_date="'. $day->authReserveDate($day->everyDay())->first()->setting_reserve .'" reserve_part="'. $day->authReserveDate($day->everyDay())->first()->setting_part .'" reserve_id ='. $day->authReserveDate($day->everyDay())->first()->pivot->id .' value= "'. $reservePart .'">';
+            $html[] = '<input type="submit" class="btn btn-danger mb-8 modal-open" data-toggle="modal" data-target="#testModal"  p-0 w-75" style="font-size:12px" reserve_date="'. $day->authReserveDate($day->everyDay())->first()->setting_reserve .'" reserve_part="'. $day->authReserveDate($day->everyDay())->first()->setting_part .'" reserve_id ='. $day->authReserveDate($day->everyDay())->first()->pivot->id .' value= "'. $reservePart .'">';
             $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
 
             $html[] ='<div class="modal fade" id="testModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">';
@@ -72,7 +72,7 @@ class CalendarView{
             $html[] ='<h4><div class="modal-title" id="myModalLabel">削除確認画面</div></h4>';
             $html[] ='</div>';
             $html[] ='<p class = modal-date name="reserve_date"></p>';
-            $html[] ='<p>リモ</p><p class = modal-part name="reserve_part">時間</p><p>部</p>';
+            $html[] ='<p>リモ</p><p class = modal-part name="reserve_part"></p><p>部</p>';
             $html[] ='<input type="hidden" class="modal-id-hidden" name="delete_id" form = "deleteParts" value="">';
             $html[] ='<input type="hidden" class="modal-date-hidden" name="delete_date" form = "deleteParts" value="">';
             $html[] ='<input type="hidden" class="modal-part-hidden" name="delete_part" form = "deleteParts" value="">';

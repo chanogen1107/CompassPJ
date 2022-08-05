@@ -78,7 +78,8 @@ class PostsController extends Controller
         return redirect()->route('post.show');
     }
 
-    public function postEdit(PostFormRequest $request){
+    public function postEdit(Request $request){
+        // dd($request);
         Post::where('id', $request->post_id)->update([
             'post_title' => $request->post_title,
             'post' => $request->post_body,

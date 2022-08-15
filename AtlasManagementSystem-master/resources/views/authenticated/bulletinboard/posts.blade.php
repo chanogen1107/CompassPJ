@@ -15,18 +15,13 @@
           <p class="category_btn">{{$SubCategories->sub_category}}</p>
         @endforeach
         </div>
-          <div class="mr-5">
-            <i class="fa fa-comment"></i><span class=""></span>
-            <p>{{ $post->postComments->count()}}</p>
 
-          </div>
-          <div>
-            @if(Auth::user()->is_Like($post->id))
-            <i class="fas fa-heart un_like_btn" post_id="{{ $post->id }}"></i><span class="like_counts{{ $post->id }}">{{$post->likes->count()}}</span></p>
-            @else
-            <p class="m-0"><i class="fas fa-heart like_btn" post_id="{{ $post->id }}"></i><span class="like_counts{{ $post->id }}">{{$post->likes->count()}}</span></p>
-            @endif
-          </div>
+              <i class="fa fa-comment"></i><span class="mr-5">{{ $post->postComments->count()}}</span>
+              @if(Auth::user()->is_Like($post->id))
+              <i class="fas fa-heart un_like_btn" post_id="{{ $post->id }}"></i><span class="like_counts{{ $post->id }}">{{$post->likes->count()}}</span>
+              @else
+              <i class="fas fa-heart like_btn" post_id="{{ $post->id }}"></i><span class="like_counts{{ $post->id }}">{{$post->likes->count()}}</span>
+              @endif
         </div>
       </div>
     </div>

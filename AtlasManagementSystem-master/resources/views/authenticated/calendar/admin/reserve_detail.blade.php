@@ -6,17 +6,18 @@
     <p><span>{{$date}}日</span><span class="ml-3">{{$part}}部</span></p>
     <div class="h-75 border">
       <table class="">
+      <tr class="text-center">
+          <th class="w-25">ID</th>
+          <th class="w-25">名前</th>
+          <th class="w-25">場所</th>
+        </tr>
       @foreach($reservePersons -> users as $reservePerson)
         <tr class="text-center">
-          <th class="w-25">{{$reservePerson -> id}}</th>
-          <th class="w-25">{{$reservePerson -> over_name}}{{$reservePerson -> under_name}} </th>
-          <th class="w-25">リモ{{$part}}部 </th>
+          <td class="w-25">{{$reservePerson -> id}}</td>
+          <td class="w-25">{{$reservePerson -> over_name}}{{$reservePerson -> under_name}} </td>
+          <td class="w-25">リモ{{$part}}部 </td>
         </tr>
         @endforeach
-        <tr class="text-center">
-          <td class="w-25"></td>
-          <td class="w-25"></td>
-        </tr>
       </table>
     </div>
   </div>

@@ -62,7 +62,7 @@ class CalendarView{
             $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
           }else{
             $html[] = '<input type="hidden" name="delete_date" reserve_id ='. $day->authReserveDate($day->everyDay())->first()->pivot->id .'">';
-            $html[] = '<input type="submit" class="btn-reserve mb-8 modal-open" data-toggle="modal" data-target="#testModal"  p-0 w-75" style="font-size:12px" reserve_date="予約日：'. $day->authReserveDate($day->everyDay())->first()->setting_reserve .'" reserve_part="時間：リモ'. $day->authReserveDate($day->everyDay())->first()->setting_part .'部" reserve_id ='. $day->authReserveDate($day->everyDay())->first()->pivot->id .' value= "'. $reservePart .'">';
+            $html[] = '<input type="submit" class="btn-reserve mb-8 modal-open" data-toggle="modal" data-target="#testModal"  p-0 w-75" style="font-size:12px" reserve_date="'. $day->authReserveDate($day->everyDay())->first()->setting_reserve .'" reserve_part="'. $day->authReserveDate($day->everyDay())->first()->setting_part .'" reserve_id ='. $day->authReserveDate($day->everyDay())->first()->pivot->id .' value= "'. $reservePart .'">';
             $html[] = '<input type="hidden" name="getPart[]" value="" form="reserveParts">';
 
             $html[] ='<div class="modal fade" id="testModal" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true">';
@@ -71,10 +71,17 @@ class CalendarView{
             $html[] ='<div class="modal-header">';
             $html[] ='<h4><div class="modal-title" id="myModalLabel"></div></h4>';
             $html[] ='</div>';
+            $html[] ='<div class = part-flex>';
+            $html[] ='<p class = ml-3>予約日：</p>';
             $html[] ='<p class = "modal-date" name="reserve_date">';
+            $html[] ='</div>';
+            $html[] ='<div class = part-flex>';
+            $html[] ='<p class = ml-3>時間：　リモ</p>';
             $html[] ='<p class = "modal-part" name="reserve_part">';
-            $html[] ='<div class="modal-body">';
-            $html[] ='<p>上記の予約をキャンセルしてもよろしいですか？</p>';
+            $html[] ='<p>部</p>';
+            $html[] ='</div>';
+            $html[] ='<div class = part-flex>';
+            $html[] ='<p class = ml-3>上記の予約をキャンセルしてもよろしいですか？</p>';
             $html[] ='</div>';
             $html[] ='<input type="hidden" class="modal-id-hidden" name="delete_id" form = "deleteParts" value="">';
             $html[] ='<input type="hidden" class="modal-date-hidden" name="delete_date" form = "deleteParts" value="">';

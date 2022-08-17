@@ -266,4 +266,5 @@ li{
 .part-flex{
   display: flex;
   flex-wrap: nowrap;
+  padding: 0 0 0 20;
 }

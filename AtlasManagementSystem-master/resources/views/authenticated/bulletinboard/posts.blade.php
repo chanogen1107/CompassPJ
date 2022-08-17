@@ -10,19 +10,20 @@
       <p><a href="{{ route('post.detail', ['id' => $post->id]) }}">{{ $post->post_title }}</a></p>
       <div class="post_bottom_area d-flex">
         <div class="d-flex post_status">
-        <div class="mr-5">
+        <div class="cate-box">
         @foreach($post->SubCategory as $SubCategories)
           <p class="category_btn">{{$SubCategories->sub_category}}</p>
         @endforeach
         </div>
-
+        </div>
+        <div class = re-box>
               <i class="fa fa-comment"></i><span class="mr-5">{{ $post->postComments->count()}}</span>
               @if(Auth::user()->is_Like($post->id))
               <i class="fas fa-heart un_like_btn" post_id="{{ $post->id }}"></i><span class="like_counts{{ $post->id }}">{{$post->likes->count()}}</span>
               @else
               <i class="fas fa-heart like_btn" post_id="{{ $post->id }}"></i><span class="like_counts{{ $post->id }}">{{$post->likes->count()}}</span>
               @endif
-        </div>
+          </div>
       </div>
     </div>
     @endforeach

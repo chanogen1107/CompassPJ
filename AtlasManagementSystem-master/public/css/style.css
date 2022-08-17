@@ -126,11 +126,20 @@ li{
   border-radius:10px;
 }
 .post_bottom_area{
+  display: flex;
+  flex-wrap: nowrap;
   justify-content: space-between;
 }
 
+.cate-box{
+  padding: 0 20 0 0;
+}
+
 .re-box{
-  justify-content: flex-end;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: right;
+  padding: 0 20 0 0;
 }
 
 .like_btn,
@@ -252,4 +261,9 @@ li{
 }
 .subject_inner{
   display:none;
+}
+
+.part-flex{
+  display: flex;
+  flex-wrap: nowrap;
 }

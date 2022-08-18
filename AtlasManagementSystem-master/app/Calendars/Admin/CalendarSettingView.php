@@ -17,7 +17,9 @@ class CalendarSettingView{
   public function render(){
     $html = [];
     $html[] = '<div class="calendar text-center">';
-    $html[] = '<table class="table m-auto border adjust-table">';
+    $html[] = '<div class="p-5" style="border-radius:5px; background:#FFF;">';
+    $html[] = '<p class = "text-center">'.$this->getTitle().'</p>';
+    $html[] = '<table class="table m-auto border adjust-table" style="border-radius:5px; background:#FFF;">';
     $html[] = '<thead>';
     $html[] = '<tr>';
     $html[] = '<th class="border">月</th>';
@@ -63,6 +65,7 @@ class CalendarSettingView{
     }
     $html[] = '</tbody>';
     $html[] = '</table>';
+    $html[] = '</div>';
     $html[] = '</div>';
     $html[] = '<form action="'.route('calendar.admin.update').'" method="post" id="reserveSetting">'.csrf_field().'</form>';
     return implode("", $html);

@@ -1,11 +1,14 @@
 @extends('layouts.sidebar')
 
 @section('content')
-<div class="w-75 m-auto">
-  <div class="w-100">
-    <p>{{ $calendar->getTitle() }}</p>
+<div class = "title_seat mb-3 mt-5">
+    <p class="title_text">スクール予約確認</p>
+</div>
+<div class="w-75 mr-auto ml-auto " style="border-radius:5px; background:#FFF;">
+
+<div class="w-100 p-5">
+    <p class = "text-center">{{ $calendar->getTitle() }}</p>
     <p>{!! $calendar->render() !!}</p>
-    <h1>一覧？</h1>
   </div>
 </div>
 @endsection

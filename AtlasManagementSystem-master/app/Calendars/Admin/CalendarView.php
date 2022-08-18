@@ -43,7 +43,7 @@ class CalendarView{
         if($startDay <= $day->everyDay() && $toDay >= $day->everyDay()){
           $html[] = '<td class="past-day border">';
         }else{
-          $html[] = '<td class="border '.$day->getClassName().'">';
+          $html[] = '<td class=" border '.$day->getClassName().'">';
         }
         $html[] = $day->render();
         $html[] = $day->dayPartCounts($day->everyDay());

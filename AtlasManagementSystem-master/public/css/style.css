@@ -137,6 +137,10 @@ li{
 .calendar-btn{
  width:200;
 }
+
+.detail_size{
+  width: 200px;
+}
 /* モーダル */
 .modal{
     display: none;
@@ -249,6 +253,10 @@ li{
   color: rgb(255, 255, 255);
   border-radius: 5%;
   width: 49%;
+}
+
+.category_box{
+  display: none;
 }
 
 /* 掲示板 詳細画面 */

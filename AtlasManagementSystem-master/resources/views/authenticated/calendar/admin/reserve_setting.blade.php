@@ -6,8 +6,8 @@
     <p class="title_text">スクール枠登録</p>
 </div>
     {!! $calendar->render() !!}
-    <div class="adjust-table-btn m-auto text-right">
-      <input type="submit" class="btn btn-primary" value="登録" form="reserveSetting" onclick="return confirm('登録してよろしいですか？')">
+    <div class="adjust-table-btn calendar-register text-right">
+      <input type="submit" class="btn btn-primary calendar-btn" value="登録" form="reserveSetting" onclick="return confirm('登録してよろしいですか？')">
     </div>
   </div>
 </div>

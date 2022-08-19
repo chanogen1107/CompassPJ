@@ -17,7 +17,7 @@ class CalendarSettingView{
   public function render(){
     $html = [];
     $html[] = '<div class="calendar-p calendar text-center">';
-    $html[] = '<div class="p-5" style="border-radius:5px; background:#FFF;">';
+    $html[] = '<div class="p-5" style="background:#FFF;">';
     $html[] = '<p class = "text-center">'.$this->getTitle().'</p>';
     $html[] = '<table class="table m-auto border adjust-table" style="border-radius:5px; background:#FFF;">';
     $html[] = '<thead>';
@@ -65,6 +65,9 @@ class CalendarSettingView{
     }
     $html[] = '</tbody>';
     $html[] = '</table>';
+    // $html[] =  '<div class="adjust-table-btn m-auto text-right">';
+    // $html[] = '<input type="submit" class="btn btn-primary" value="登録" form="reserveSetting">';
+    // $html[] = '</div>';
     $html[] = '</div>';
     $html[] = '</div>';
     $html[] = '<form action="'.route('calendar.admin.update').'" method="post" id="reserveSetting">'.csrf_field().'</form>';

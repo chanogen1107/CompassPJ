@@ -124,6 +124,19 @@ li{
   padding-left: 10%;
   padding-right: 10%;
 }
+
+.calendar-register{
+  margin-left: 154px;
+  width: 80%;
+  padding-right: 14%;
+  padding-bottom: 2%;
+  justify-content: center;
+  background-color: #FFF;
+}
+
+.calendar-btn{
+ width:200;
+}
 /* モーダル */
 .modal{
     display: none;

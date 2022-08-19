@@ -90,7 +90,7 @@ li{
 }
 .day_part{
   color:#494949;
-  font-size:12px;
+  font-size:15px;
 }
 .adjust-table{
   width:70% !important;
@@ -120,6 +120,10 @@ li{
   border-color:#bd2130;
 }
 
+.calendar-p{
+  padding-left: 10%;
+  padding-right: 10%;
+}
 /* モーダル */
 .modal{
     display: none;
@@ -307,6 +311,10 @@ li{
   cursor:pointer;
 }
 
+.category_box{
+  background-color: #FFF;
+}
+
 /* ユーザー検索 */
 .reserve_users_area{
   display:flex;
@@ -381,5 +389,5 @@ li{
 .part-flex{
   display: flex;
   flex-wrap: nowrap;
-  padding: 0 0 0 20;
+  justify-content: space-between;
 }

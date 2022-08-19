@@ -57,7 +57,7 @@
     @endforeach
   </div>
 </div>
-  <div class="search_area w-25 mt-5 border p-4">
+  <div class="search_area w-25 mt-5 p-4">
     <div class="">
       <div>
         <input type="text" class="free_word btn-block box-design mb-3" name="keyword" placeholder="キーワードを検索" form="userSearchRequest">

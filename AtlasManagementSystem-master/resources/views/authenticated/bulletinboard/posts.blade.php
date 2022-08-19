@@ -1,7 +1,7 @@
 @extends('layouts.sidebar')
 
 @section('content')
-<div class="board_area w-100 border m-auto d-flex">
+<div class="board_area w-100 m-auto d-flex">
   <div class="post_view w-75 mt-5">
   <div class = "title_seat mb-3 ">
     <p class="title_text">投稿一覧</p>
@@ -30,7 +30,7 @@
     </div>
     @endforeach
   </div>
-  <div class="other_area border w-25 mt-5">
+  <div class="other_area w-25 mt-5">
     <div class=" m-4">
       <div class="btn btn-primary btn-lg btn-block mb-3"><a class = "post-text" href="{{ route('post.input') }}">投稿</a></div>
       <div class="mb-3 likemy-btn">
@@ -49,10 +49,10 @@
     </div>
       <ul >
         @foreach($categories as $category)
-        <li class="main_categories" category_id="{{ $category->id }}"><span>{{ $category->main_category }}<span></li>
+        <li class="main_categories mb-2 ml-3" category_id="{{ $category->id }}"><span>{{ $category->main_category }}▼<span></li>
         @foreach($category->subCategories as $sub_category)
-        <li >
-         <input type="submit"  name="category_word" class="category_btn" value="{{ $sub_category->sub_category }}" value="{{ $sub_category->id }}" form="postSearchRequest">
+        <li class = "category_num{{$sub_category->MainCategory->id}} category_box">
+         <input type="submit"  name="category_word" class="category_btn ml-3"  value="{{ $sub_category->sub_category }}" value="{{ $sub_category->id }}" form="postSearchRequest">
         </li>
         <!-- <input type="submit" name="category_word" class="category_btn" value="{{ $sub_category->id }}" form="postSearchRequest" > -->
         <!-- <input type="submit" class="category_btn" name="category_word" category_id="{{ $category->id }}" value="{{ $sub_category->sub_category }}" form="postSearchRequest"> -->

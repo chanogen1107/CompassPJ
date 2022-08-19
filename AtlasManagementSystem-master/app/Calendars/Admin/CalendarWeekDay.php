@@ -33,21 +33,21 @@ class CalendarWeekDay{
     $html[] = '<div class="text-left">';
     if($one_part){
       // dd($one_part);
-      $html[] ='<div class = part-flex>';
+      $html[] ='<div class = "part-flex pl-4 pr-4">';
       $html[] = '<a class="day_part mr-4 pt-1 " href = "/calendar/'.$one_part -> id.'/'.$one_part ->setting_reserve.'/'.$one_part -> setting_part.'">1部</a>';
       $html[] ='<p class="day_part m-0 pt-1">'.$one_part->users->count().' </p>';
       $html[] ='</div>';
       // 横並びにならず
     }
     if($two_part){
-      $html[] ='<div class = part-flex>';
+      $html[] ='<div class = "part-flex pl-4 pr-4">';
       $html[] = '<a class="day_part mr-4 pt-1 " href = "/calendar/'.$two_part -> id.'/'.$two_part ->setting_reserve.'/'.$two_part -> setting_part.'">2部</a>';
       $html[] = '<p class="day_part m-0 pt-1">'.$two_part->users->count().'</p>';
       $html[] ='</div>';
       // 繋げれば、横並びにはなる
     }
     if($three_part){
-      $html[] ='<div class = part-flex>';
+      $html[] ='<div class = "part-flex pl-4 pr-4">';
       $html[] = '<a class="day_part mr-4 pt-1 " href = "/calendar/'.$three_part -> id.'/'.$three_part ->setting_reserve.'/'.$three_part -> setting_part.'">3部</a>';
       $html[] = '<p class="day_part m-0 pt-1">'.$three_part->users->count().'</p>';
       $html[] ='</div>';
